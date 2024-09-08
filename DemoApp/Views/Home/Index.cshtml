@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hotel Search</h1>
+</div>
+<div>
+    <h4>Problem statement</h4>
+    <p>
+        You are required to develop a <b>JSON REST web service</b> for hotel search. The service must have two</p>
+    <p>API interfaces:</p>
+    <ol>
+        <li>
+            <b>CRUD interface</b> for hotel data management.
+            Required hotel data include:
+            <ul>
+                <li>Hotel name</li>
+                <li>Hotel price</li>
+                <li>Hotel geo location</li>
+            </ul>
+        </li>
+        <li>
+            <b>Search interface</b> that returns the list of all hotels to the user:
+            <ul>
+                <li>Search parameter: My current geo location</li>
+                <li>Output: List of hotels<br/>
+                    <ul>
+                        <li>For each hotel, return the name, the price, and the distance from my current location</li>
+                        <li>The list should be ordered. Hotels that are cheaper and closer to my current location
+                            should be positioned closer to the top of the list. Hotels that are more expensive and
+                            further away should be positioned closer to the bottom of the list.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <p>
+        Search interface should return only the hotels prepared through the CRUD interface. You are not
+        required to use any persistent storage (database or similar), but the design of the application should
+        enable for easy addition of the persistence layer afterwards. You’ll score bonus points if the search
+        interface supports paging.</p>
+
+    <h4>Expected outcome</h4>
+    <p>
+        You should prepare a working solution for this assignment. We at Lemax work with Microsoft .NET,
+        so a solution based on .NET stack, written in C# is preferred.
+    </p>
+    <p>
+        Be sure to submit your solution before the agreed deadline. Submit it in any form you think is best
+        appropriate. After the submission, you’ll be asked to present the solution in person. We’ll evaluate
+        the solution based on following criteria:
+    </p>
+    <ul>
+        <li><b>Functionality</b> – is the application functioning as expected? Are negative and corner cases
+            covered?</li>
+        <li><b>Technical design</b> – how well does the code follows relevant design principles (OOP, Design
+            patterns, SOLID, DRY...)? Is the code extensible and reusable?</li>
+        <li><b>Standards</b> – is the API aligned with industry standards and guidelines (HTTP, REST...)?</li>
+        <li><b>Coding style</b> – is the coding style clean and consistent? How’s the variable naming?</li>
+        <li><b>Source code organization</b> – are source code files organized in a folder structure according to
+            industry best practices? Is the solution committed to a source code repository (Github,
+            Bitbucket, GitLab etc.)?</li>
+        <li><b>Performance</b> – what data structures and algorithms are selected? What is the complexity of
+            the search functionality? Does it allow for scaling?</li>
+        <li><b>Security</b> – are secure coding practices being used (defensive programming, input validation
+            etc.)? does the API implements authentication and authorization?</li>
+        <li><b>Test coverage</b> – does the solution include unit tests? Are the test cases documented? is test
+            execution automated?</li>
+        <li><b>Documentation</b> – is the code self-documenting? Are code comments used and for what
+            purpose? Does the solution include markdown documentation? How easy is for the next
+            developer to take over this solution?</li>
+        <li><b>Processes</b> – does the solution include any elements of the CI/CD (build, package, test...)?
+            How much attention was given to the application logs? Are any other aspects implemented,
+            that would ease the usage of the application in a production environment (monitoring,
+            health-checks etc.)?</li>
+        <li><b>Presentation skills</b> – how the solution is presented? Are you able to present the solution to
+            both the technical and non-technical audience? How do you accept the feedback? How do
+            you answer to questions (good ones and bad ones)?</li>
+    </ul>
+</div>

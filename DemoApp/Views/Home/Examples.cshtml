@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Examples";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>10 cheapest hotels near Zagreb</p>
+<button id="btnZagreb" class="btn btn-primary" onclick="getHotelsNearZagreb()">Get data</button>
+<a class="btn btn-info" href="https://hotels-api.mdotnet.eu/api/HotelsSearch?userLatitude=45.8150&userLongitude=15.9819&pageNumber=1&pageSize=10" target="_blank">RAW Call API</a>
+<br/>
+<table class="table-bordered table" id="tblHotelsZagreb">
+    <th>Name</th>
+    <th>Price (€)</th>
+    <th>Distance (m)</th>
+</table>
+
+<p>10 cheapest hotels near Umag</p>
+<button id="btnUmag" class="btn btn-primary" onclick="getHotelsNearUmag()">Get data</button>
+<a href="https://hotels-api.mdotnet.eu/api/HotelsSearch?userLatitude=45.4372&userLongitude=13.5257&pageNumber=1&pageSize=10" target="_blank">RAW Call API</a>
+<br/>
+<table class="table-bordered table"  id="tblHotelsUmag" style="display:none;">
+    <th>Name</th>
+    <th>Price (€)</th>
+    <th>Distance (m)</th>
+</table>
+
+<p>10 cheapest hotels near Dubrovnik</p>
+<button id="btnDubrovnik" class="btn btn-primary" onclick="getHotelsNearDubrovnik()">Get data</button>
+<a href="https://hotels-api.mdotnet.eu/api/HotelsSearch?userLatitude=42.6507&userLongitude=18.0944&pageNumber=1&pageSize=10" target="_blank">RAW Call API</a>
+<br/>
+<table class="table-bordered table" id="tblHotelsDubrovnik" style="display:none;">
+    <th>Name</th>
+    <th>Price (€)</th>
+    <th>Distance (m)</th>
+</table>
+
+<script>  
+function getHotelsNearZagreb() {
+    $("#tblHotelsZagreb tr.r").remove();
+    $("#tblHotelsZagreb").show();  
+    var url='https://hotels-api.mdotnet.eu/api/HotelsSearch?userLatitude=45.8150&userLongitude=15.9819&pageNumber=1&pageSize=10';
+    var tableId='#tblHotelsZagreb';
+    getHotelsAndWriteToTable(url, tableId);
+    }
+
+function getHotelsNearUmag() {
+    $("#tblHotelsUmag tr.r").remove();
+    $("#tblHotelsUmag").show();
+    var url='https://hotels-api.mdotnet.eu/api/HotelsSearch?userLatitude=45.4372&userLongitude=13.5257&pageNumber=1&pageSize=10';
+    var tableId='#tblHotelsUmag';
+    getHotelsAndWriteToTable(url, tableId);
+}
+
+function getHotelsNearDubrovnik() {
+    $("#tblHotelsDubrovnik tr.r").remove();
+    $("#tblHotelsDubrovnik").show();
+    var url='https://hotels-api.mdotnet.eu/api/HotelsSearch?userLatitude=42.6507&userLongitude=18.0944&pageNumber=1&pageSize=10';
+    var tableId='#tblHotelsDubrovnik';
+    getHotelsAndWriteToTable(url, tableId);
+}
+    
+    function getHotelsAndWriteToTable(url, tableId){
+    $.ajax({  
+
+            url: url,  
+            dataType: "json",  
+            type: "Get",
+            crossDomain: true,
+            success: function (data) {  
+                var tr;  
+                console.log(data);  
+                for (var i = 0; i < data.length; i++) {  
+                    tr = tr + "<tr class='r'>";  
+                    tr = tr + "<td>" + data[i].name + "</td>";  
+                    tr = tr + "<td>" + data[i].price + "</td>";  
+                    tr = tr + "<td>" + data[i].distance + "</td>";  
+                    tr = tr + "</tr>";  
+                }  
+                $(tableId).append(tr);  
+            },  
+            error: function (xhr) {  
+                alert('No Valid Data');  
+            }  
+        });  
+}
+</script>
+            
